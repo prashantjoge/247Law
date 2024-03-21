@@ -35,7 +35,7 @@ thread_id = st.session_state.thread_id
 st.sidebar.header("Configuration")
 api_key = st.sidebar.text_input("Enter your OpenAI API key", type="password")
 if api_key:
-    openai.api_key = api_key
+    openai.api_key = OPENAI_API_KEY
 # Main chat interface setup
 st.title("24/7-Law Legal Advice")
 st.write(
