@@ -1,6 +1,4 @@
 ''''
-
-openai
-streamlit 
-time
+openai==1.14.2
+streamlit=1.32.2 
 ''''
