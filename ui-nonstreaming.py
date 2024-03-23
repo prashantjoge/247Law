@@ -95,6 +95,4 @@ if prompt := st.chat_input(
         for message in messages:
             with st.chat_message("assistant"):
                 # st.markdown(st.session_state.thread_id + ":" + run.id)
-                st.markdown(
-                    messages.data[0].content[0].text.value, unsafe_allow_html=False
-                )
+                st.markdown(message)
