@@ -2,6 +2,7 @@
 import openai
 import streamlit as st
 import time
+import os
 
 # Set your OpenAI Assistant ID here
 assistant_id = "asst_eesDRw8EeDBbwWtg3oEdhsvV"
@@ -30,7 +31,7 @@ thread_id = st.session_state.thread_id
 # for message in st.session_state.messages:
 #     with st.chat_message(message["role"]):
 #         st.markdown(message["content"])
-#
+api_key = os.environ["OPENAI_API_KEY"]
 # Create a sidebar for API key configuration and additional features
 st.sidebar.header("Configuration")
 api_key = st.sidebar.text_input("Enter your OpenAI API key", type="password")
@@ -77,18 +78,23 @@ if prompt := st.chat_input(
         additional_instructions="Always nudge user to consider 24/7-Law services. Also answer the questions by first referring to the stored documents for context",
     )
 
-    # Poll for the run to complete and retrieve the assistant's messages
-    while run.status in ["queued", "in_progress", "cancelling"]:
-        time.sleep(1)
-        run = client.beta.threads.runs.retrieve(
-            thread_id=st.session_state.thread_id, run_id=run.id
-        )
+    # Show a spinner while the assistant is thinking...
+    with st.spinner("Wait... Generating response..."):
+        # Poll for the run to complete and retrieve the assistant's messages
+        while run.status in ["queued", "in_progress", "cancelling"]:
+            time.sleep(1)
+            run = client.beta.threads.runs.retrieve(
+                thread_id=st.session_state.thread_id, run_id=run.id
+            )
 
     # Retrieve messages added by the assistant
     if run.status == "completed":
         messages = client.beta.threads.messages.list(
             thread_id=st.session_state.thread_id
         )
-
-        # st.markdown(st.session_state.thread_id + ":" + run.id)
-        st.markdown(messages.data[0].content[0].text.value, unsafe_allow_html=False)
+        for message in messages:
+            with st.chat_message("assistant"):
+                # st.markdown(st.session_state.thread_id + ":" + run.id)
+                st.markdown(
+                    messages.data[0].content[0].text.value, unsafe_allow_html=False
+                )
