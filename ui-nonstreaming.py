@@ -78,17 +78,18 @@ if prompt := st.chat_input(
     )
 
     # Poll for the run to complete and retrieve the assistant's messages
-    while run.status in ["queued", "in_progress", "cancelling"]:
-        time.sleep(1)
-        run = client.beta.threads.runs.retrieve(
-            thread_id=st.session_state.thread_id, run_id=run.id
-        )
+    with st.spinner("Wait... Generating response..."):
+        while run.status in ["queued", "in_progress", "cancelling"]:
+            time.sleep(1)
+            run = client.beta.threads.runs.retrieve(
+                thread_id=st.session_state.thread_id, run_id=run.id
+            )
 
-    # Retrieve messages added by the assistant
+        # Retrieve messages added by the assistant
     if run.status == "completed":
         messages = client.beta.threads.messages.list(
             thread_id=st.session_state.thread_id
         )
-
+        st.session_state.messages.append({"role": "assistant", "content": messages})
         # st.markdown(st.session_state.thread_id + ":" + run.id)
         st.markdown(messages.data[0].content[0].text.value, unsafe_allow_html=False)
