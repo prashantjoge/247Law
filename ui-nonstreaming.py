@@ -54,7 +54,7 @@ for message in st.session_state.messages:
 
 # Chat input for the user
 if prompt := st.chat_input(
-    "Please tell me what kind of legal troubles you are facing?"
+    "I'm Hamilton. I can help you with your legal troubles.I can refer you to capable barristors who can assist you."
 ):
     # Display existing messages in the chat
     for message in st.session_state.messages:
@@ -95,4 +95,4 @@ if prompt := st.chat_input(
         for message in messages:
             with st.chat_message("assistant"):
                 # st.markdown(st.session_state.thread_id + ":" + run.id)
-                st.markdown(message.content[0].text, unsafe_allow_html=False)
+                st.markdown(message.content[0].text.value, unsafe_allow_html=False)
