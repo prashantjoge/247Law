@@ -53,7 +53,7 @@ for message in st.session_state.messages:
 
 # Chat input for the user
 if prompt := st.chat_input(
-    "Please tell me what kind of legal troubles you are facing?"
+    "I'm Hamilton, your legal assistant. How can I help you today?"
 ):
     # Display existing messages in the chat
     for message in st.session_state.messages:
