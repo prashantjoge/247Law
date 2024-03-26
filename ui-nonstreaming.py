@@ -90,7 +90,7 @@ if prompt := st.chat_input("I'm Hamilton. I will be your virtual counsellor. "):
         messages = client.beta.threads.messages.list(
             thread_id=st.session_state.thread_id
         )
-        for message in messages:
-            with st.chat_message("assistant"):
-                # st.markdown(st.session_state.thread_id + ":" + run.id)
-                st.markdown(message.content[0].text.value, unsafe_allow_html=False)
+        # for message in messages:
+        with st.chat_message("assistant"):
+            # st.markdown(st.session_state.thread_id + ":" + run.id)
+            st.markdown(message.content[0].text.value, unsafe_allow_html=False)
