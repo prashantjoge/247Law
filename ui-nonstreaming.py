@@ -53,9 +53,7 @@ for message in st.session_state.messages:
         st.markdown(message["content"])
 
 # Chat input for the user
-if prompt := st.chat_input(
-    "I'm Hamilton. I can help you with your legal troubles.I can refer you to capable barristors who can assist you."
-):
+if prompt := st.chat_input("I'm Hamilton. I will be your virtual counsellor. "):
     # Display existing messages in the chat
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
