@@ -93,4 +93,4 @@ if prompt := st.chat_input(
         st.session_state.messages.append({"role": "assistant", "content": messages})
         # st.markdown(st.session_state.thread_id + ":" + run.id)
         with st.chat_message("assistant"):
-    2        st.markdown(messages.data[0].content[0].text.value, unsafe_allow_html=True)
+            st.markdown(messages.data[0].content[0].text.value, unsafe_allow_html=True)
