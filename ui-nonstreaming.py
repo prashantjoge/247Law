@@ -25,7 +25,7 @@ if "start_chat" not in st.session_state:
 if "messages" not in st.session_state:
     st.session_state.messages = []
 # Create a thread once and store its ID in session state
-thread_id = st.session_state.thread_id
+# thread_id = st.session_state.thread_id
 # # Display existing messages in the chat
 # for message in st.session_state.messages:
 #     with st.chat_message(message["role"]):
@@ -86,11 +86,17 @@ if prompt := st.chat_input(
             )
 
         # Retrieve messages added by the assistant
-    if run.status == "completed":
-        messages = client.beta.threads.messages.list(
-            thread_id=st.session_state.thread_id
-        )
-        st.session_state.messages.append({"role": "assistant", "content": messages})
-        # st.markdown(st.session_state.thread_id + ":" + run.id)
+        # if run.status == "completed":
+    messages = client.beta.threads.messages.list(thread_id=st.session_state.thread_id)
+    # Process and display assistant messages
+    assistant_messages_for_run = [
+        message
+        for message in messages
+        if message.run_id == run.id and message.role == "assistant"
+    ]
+    for message in assistant_messages_for_run:
+        # full_response = process_message_with_citations(message)
+        st.session_state.messages.append({"role": "assistant", "content": message})
         with st.chat_message("assistant"):
-            st.markdown(messages.data[0].content[0].text.value, unsafe_allow_html=True)
+            # st.markdown(, unsafe_allow_html=True)
+            st.markdown(message.content[0].text.value, unsafe_allow_html=True)
