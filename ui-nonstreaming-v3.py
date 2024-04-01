@@ -137,7 +137,9 @@ tools = {"code_interpreter": "🐍", "retrieval": "🔎", "function": "💬"}
 assistant_id = "asst_eesDRw8EeDBbwWtg3oEdhsvV"
 # st.write(st.session_state)
 
-api_key = os.environ["OPENAI_API_KEY"]
+
+# api_key = os.environ["OPENAI_API_KEY"]
+api_key = st.secrets["OPENAI_API_KEY"]
 OpenAI.api_key = api_key
 # Initialize the OpenAI client (ensure to set your API key in the sidebar within the app)
 client = OpenAI()
