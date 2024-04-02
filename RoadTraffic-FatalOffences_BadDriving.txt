@@ -1,0 +1,287 @@
+Road Traffic - Fatal Offences and Bad Driving
+Introduction
+This guidance deals with the most serious offences that relate to the way in which a motor vehicle has been driven. The purpose of the guidance is to assist prosecutors in particular with:
+
+What may amount to “dangerous” and what may amount to “careless” driving
+Which factors are irrelevant to this assessment
+The standard that applies to designated persons, driving for a police purpose, who have undertaken the prescribed training
+Assessing the public interest in prosecuting emergency driving; cases where a close friend or relative is killed; and cases where the driver is seriously injured
+Evidential considerations
+This section addresses:
+
+How to distinguish between “dangerous” and “careless” driving
+Factors which are not relevant to this assessment
+The standard of a careful and competent constable who has undertaken the prescribed training
+Causation
+Thereafter, offences involving a fatality, and then other offences involving bad driving, are addressed in turn.
+
+“Dangerous” and “careless” driving
+Dangerous driving is defined by section 2A Road Traffic Act 1988 (RTA 1988). It is driving falling far below what would be expected of a competent and careful driver, where it would be obvious to a competent and careful driver that driving in this way would be dangerous. It also includes driving where it would be obvious to a competent and careful driver that driving the vehicle in its current state would be dangerous. “Dangerous” refers to danger either of injury to any person or of serious damage to property.
+
+Careless driving is defined by section 3ZA RTA 1988. It is driving which falls below what would be expected of a competent and careful driver.
+
+In both cases, regard shall be had not only to the circumstances of which the driver could be expected to be aware but also to any circumstances shown to have been within their knowledge.
+
+Note however the different standard for designated persons in certain circumstances under section 5 and section 6 Police, Crime, Sentencing and Courts Act 2022.
+
+The following may, depending on the facts and circumstances of each individual case, and recognising the potential for overlap in some with careless driving, amount to dangerous driving:
+
+racing or competitive driving
+failing to have a proper and safe regard for vulnerable road users such as cyclists, motorcyclists, horse riders, the elderly and pedestrians or when in the vicinity of a pedestrian crossing, hospital, school or residential home
+speed, which is particularly inappropriate for the prevailing road or traffic conditions
+aggressive driving, such as sudden lane changes, cutting into a line of vehicles or driving much too close to the vehicle in front
+disregard of traffic lights and other road signs, which, on an objective analysis, would appear to be deliberate
+disregard of warnings from fellow passengers
+overtaking which could not have been carried out safely
+driving when knowingly suffering from a medical or physical condition that significantly and dangerously impairs the offender’s driving skills such as having an arm or leg in plaster, or impaired eyesight. It can include the failure to take prescribed medication
+driving when knowingly deprived of adequate sleep or rest
+driving a vehicle knowing it has a dangerous defect or is poorly maintained or is dangerously loaded
+driving a vehicle poorly when in addition that is inappropriate because of the type of vehicle or the presence of passengers
+using a hand-held mobile phone or other hand-held electronic equipment whether as a phone or to compose or read text messages when the driver was avoidably and dangerously distracted by that use
+driving whilst avoidably and dangerously distracted (i.e. the degree of distraction, more than momentary) such as whilst reading a newspaper/map, talking to and looking at a passenger, selecting and lighting a cigarette or by adjusting the controls of electronic equipment such as a radio, hands-free mobile phone or satellite navigation equipment
+A brief but obvious danger arising from a seriously dangerous manoeuvre. This covers situations where a driver has made a mistake or an error of judgement that was so substantial that it caused the driving to be dangerous even for only a short time. Cases that illustrate this principle include:
+Att. Gen’s Reference No 32 of 2001 [2001] EWCA Crim 2120 (offender failed to stop at a junction where there was a give way sign, failing to see a taxi that was being driven across the junction perfectly properly and colliding with it)
+Att. Gen’s Reference No 4 of 2000 [2001] EWCA Crim 780 (offender unintentionally pressed the accelerator instead of the brake)
+Att. Gen’s Reference No 76 of 2002 (Hodges) [2002] EWCA Crim 2344 (offender drove across a junction marked by a give way sign and collided with a car that was being driven along the major road and had no explanation for his failure to see the other car) – “this was a single misjudgment. It was a bad misjudgment but nevertheless a single one.”
+Dangerous driving may therefore most clearly be made out by deliberate decisions to drive in a way which presents an obvious risk. This is because driving falls not just below but far below the standard of a careful and competent driver when it is deliberately bad. However, dangerous driving can also include misjudgments of the most serious degree. Whether the misjudgment was so serious as to be dangerous rather than careless is to be assessed not by the consequences which followed but by the nature of the error in all the circumstances in which it occurred.
+
+The following may, depending on the facts and circumstances of each individual case, amount to careless driving:
+
+speeding, which is not aggravated by the prevailing road or traffic conditions, but which is inappropriate
+momentarily or inadvertently changing lanes without warning or driving too close to the vehicle in front
+overtaking on the inside i.e. inappropriate but not obviously dangerous overtaking
+momentary inattention through mobile phone use, tuning a radio, reading a newspaper/map, talking to and looking at a passenger, selecting and lighting a cigarette or by adjusting the controls of electronic equipment such as a radio, hands-free mobile phone or satellite navigation equipment
+other misjudgments, such as inadvertently driving through a red light or proceeding without sufficient caution from a side road
+The following may, depending on the facts and circumstances of each individual case, amount to inconsiderate driving:
+
+flashing of lights to force other drivers in front to give way
+misuse of any lane (including cycling lanes) to avoid queuing or gain some other advantage over other drivers
+unnecessarily remaining in an overtaking lane
+unnecessarily slow driving or braking without good cause
+driving with un-dipped headlights which dazzle oncoming drivers, cyclists or pedestrians
+driving through a puddle causing pedestrians to be splashed
+driving a bus in such a way as to alarm passengers
+Factors that are not relevant in deciding whether driving is dangerous or careless
+The following factors are not relevant when deciding whether an act of driving is dangerous or careless:
+
+The injury or death of one or more persons involved in a road traffic collision. Importantly, injury or death does not, by itself, turn a collision into careless driving or turn careless driving into dangerous driving. Multiple deaths are however an aggravating factor for sentencing purposes.
+The special skill or lack of skill of the driver: R v Bannister [2009] EWCA Crim 1571 – save for the different standard in certain circumstances for police drivers, see immediately below.
+The commission of separate driving offences at the same time, such as driving whilst disqualified or driving without a certificate of insurance or a driving licence, where those offences are unrelated to the standard of driving. Other offences may or may not be relevant to the standard of driving. For instance, using a mobile phone while driving is an offence in its own right. The degree to which it causes inattention by the driver may be relevant to careless or dangerous driving charges.
+The fact that the driver had consumed alcohol or drugs, which may be more prejudicial than probative (and thus merit exclusion as evidence), unless it can be demonstrated that the amount of drink or drugs was such as to impair the standard of driving. This may be in the form, for instance, of expert analysis of a blood sample; it may be in the form of other evidence in the case. A line of cases have considered this question, including R v McBride [1962] 2 Q.B. 167, R v Woodward [1995] 1 W.L.R. 375, >R v Thorpe [1972] 1 W.L.R. 342 and R v Millington [1996] 1 Cr. App. R. (S.) 45.
+The fact that the defendant has previous convictions for road traffic offences.
+The mere disability of a driver caused by mental illness or by physical injury or illness, except where there is evidence that the disability adversely affected the manner of the driving.
+The fact that the driver was responding to an emergency – save for duress of circumstances, this is not relevant at the evidential stage when assessing the standard of driving (although it is a defence to specific speed and traffic sign provisions).
+In all cases involving drivers of emergency vehicles, which are referred by the investigator to the CPS for a prosecution decision, prosecutors will need to check if applicable that the following is provided by the investigator:
+
+evidence in the form of any police collision reports
+advice provided by the NPCC pursuits lead where applicable, or evidence from a suitably qualified expert in police pursuits, where applicable
+statements regarding the manner of the driving
+evidence about the policies and procedures that applied to the circumstances in which the emergency service driver drove
+evidence of the training the driver had in fact received
+Designated persons driving for a police purpose who have undertaken the prescribed training
+
+Section 5 and section 6 of the Police, Crime, Sentencing and Courts Act 2022 amended the RTA test of dangerous and careless driving, set out above, in certain circumstances applying to police drivers. The amendment means, if (but only if) three criteria are met, allegations of dangerous or careless driving should be assessed against the standards of a careful and competent constable. The three criteria are that the driver:
+
+meets the definition of a ‘designated person’: see section 2A(1C) and section 3ZA(2)A RTA 1988
+was driving for a police purpose: see section 2A(1A)(a) and section 3ZA(2A)(a) RTA 1988
+had undertaken the prescribed training: see the Police Driving (Prescribed Training) Regulations 2023
+Where these three criteria are not established on the evidence, the standard remains whether the driving fell far below, or below, the standard of a careful and competent driver. Where these three criteria are established on the evidence, the designated person:
+
+Is to be considered to have driven dangerously only if the way they drove falls far below what would be expected of a competent and careful constable who has undertaken the same prescribed training, and it would be obvious to such a competent and careful constable that driving in that way would be dangerous.
+Is to be considered to have driven carelessly only if the way they drove falls below what would be expected of a competent and careful constable who has undertaken the same prescribed training.
+Evidence should be obtained by the investigator as to what training was undertaken. This training is a relevant but not a determinative factor in assessing the standard of driving. Failure to comply with training might tend to indicate that the designated person’s driving fell far or below the standard. However, a failure to comply with training does not necessarily render driving dangerous or careless. The statutory test is not one of compliance with training. Even if there is no evidence of failing to comply with the training, the driving may still be dangerous or careless if it falls far below, or below, the standard expected of a competent and careful constable. What is important is a focus on the objective, statutory standard and whether or not the driving fell far or below it.
+
+Causation
+A number of the offences below require proof that a driver caused death (or serious injury). For the authorities on causation, see: R v Hennigan (1971) 55 Cr. App. R. 262, R v Barnes [2008] EWCA Crim 2726 and in particular R v L [2011] EWCA Crim 1249. The authorities establish:
+
+The driving must be more than a de minimis or trivial cause of death, but need not be the sole nor substantial nor major cause;
+The prosecution must establish factual causation, namely that “but for” the suspect’s driving, death would not have occurred;
+The prosecution must also establish legal causation: notwithstanding factual causation, was the suspect’s driving so remote from the consequence that they should not be liable in law for having caused it. It may be that another cause of death was so independent of the suspect’s driving that it should properly be considered in law as the sole cause. It may be that the suspect’s driving was mere background to what in fact caused the death.
+For further detail, see the Judicial College’s Crown Court Compendium at 7-9.
+
+Offences involving a fatality
+Murder and Manslaughter
+If the vehicle was used as a weapon to kill a person, with the intent to kill them or commit grievous bodily harm, a charge of murder may be considered. This is not a question of the standard of driving but rather of the defendant’s intention. Alternatively, a charge of manslaughter, whether unlawful act, gross negligence or corporate may be appropriate.
+
+Homicide offences should be considered for all fatal driving incidents. They should always be charged, rather than RTA offences, where there is a realistic prospect of conviction. In some cases they may be the only available charge, rather than RTA charges, for instance where the driving has occurred other than on a road or other public place, or when the vehicle driven was not mechanically propelled and death has been caused.
+
+Unlawful Act Manslaughter
+For the relevant law and jury directions for unlawful act manslaughter, see the Judicial College’s Crown Court Compendium. The prosecution must prove an intentional act (not omission); that the intentional act is unlawful; that it is an act which all sober and reasonable people would inevitably realise must subject the victim to at least some risk of harm.
+
+It will not suffice that the intentional unlawful act amounted to dangerous driving: Andrews v DPP [1937] A.C. 576. Instead, prosecutors who charge this offence rather than causing death by dangerous driving must articulate why the degree of dangerousness in all the circumstances and the extent to which the standard fell far below that expected of careful and competent drivers merit this course. It may also be appropriate where the driver intended or was reckless as to whether injury short of grievous bodily harm would be caused.
+
+Gross Negligence Manslaughter
+The elements of this offence were stated concisely by the President of the Queen’s Bench Division in R v Rudling [2016] EWCA Crim 741 at paragraph 18 as follows:
+
+"The breach of an existing duty of care which it is reasonably foreseeable gives rise to a serious and obvious risk of death and does, in fact, cause death in circumstances where, having regard to the risk of death, the conduct of the defendant was so bad in all the circumstances as to amount to a criminal act or omission."
+
+In cases where a death has occurred because of the manner of driving, and it is clear from the available evidence that the standard of driving has been grossly negligent on the part of the driver who owes a duty of care to other road users, a charge of gross negligence manslaughter may be the correct charge. For further information please see the Gross Negligence Manslaughter legal guidance.
+
+Gross negligence manslaughter should not be charged unless there is something to set the case apart from those cases where a statutory offence such as causing death by dangerous driving or causing death by careless driving could be proved: R v Governor of Holloway Ex P Jennings [1983] 1 A.C. 624. This will normally be evidence to show a very high degree of negligence, making the case one of the utmost gravity.
+
+The President of the Queen's Bench Division stated in R v Clayton Williams [2017] EWCA Crim 305: “It is clear that killing another person on the road can be the result of conduct which, in terms of culpability, lies above that contained within the definition of causing death by dangerous driving but short of establishing the intention required for murder. It is in that space that is found the crime of manslaughter. On the authorities, the risk of death involved in such an offence must be very high…”
+
+If this offence is charged, prosecutors should be clear about how the standard of driving fell far below even those examples of dangerous driving above.
+
+Prosecutors should consider carefully the relevant Sentencing Council guidelines when assessing whether a charge of manslaughter will provide the court with adequate powers rather than those available upon conviction for causing death by dangerous driving.
+
+Corporate Manslaughter
+The Corporate Manslaughter and Corporate Homicide Act 2007 established this particular offence, which covers the way in which activities of corporate bodies are managed and organised by their senior managers.
+
+Where a road traffic death results from the way in which the senior managers of a corporate body organise the activities of a company, this may amount to an offence under this legislation. For example, if the way in which drivers are required to work or vehicles are maintained is a causative factor in the death, this may amount to corporate manslaughter. In these circumstances, prosecutors should refer to the Corporate Manslaughter legal guidance for more information. Where there is evidence that indicates the possibility of charging corporate manslaughter, such cases must be referred to the Special Crime Division.
+
+Manslaughter: the indictment
+In Seymour [1983] 2 A.C. 493, the House of Lords held that the prosecution may charge both manslaughter and a statutory offence (at the time, causing death by reckless driving; now, causing death by dangerous driving) but where both counts appear on an indictment “it must behove the trial judge to require the prosecution to elect upon which of the two counts in the indictment they wish to proceed and not to allow the trial to proceed upon both counts.” In such cases the prosecution, having determined that there is sufficient evidence for a realistic prospect of conviction for an offence of manslaughter, should proceed on that charge. Conviction on alternative offences, including death by dangerous driving, is available by virtue of section 33 Road Safety Act 2006.
+
+Causing death by dangerous driving
+The offence of causing death by dangerous driving is committed under section 1 RTA 1988 when the suspect’s driving is a cause or factor in the death of another person and the driving was dangerous. See above for the test for “dangerous”, the different standard for designated persons in certain circumstances, and examples of the standard.
+
+Causing death by careless or inconsiderate driving
+The offence of causing death by careless driving is committed under section 2B RTA 1988 when the suspect’s driving is a cause or factor in the death of another person and the driving was careless. See above for the test for “careless”, the different standard for designated persons in certain circumstances, and examples of the standard.
+
+Although also covered by section 2B RTA 1988, the offence of causing death by inconsiderate driving is a separate offence. In this instance, prosecutors must show that inconvenience has been caused to other persons in order to prove this offence. Section 3ZA(4) RTA 1988 defines inconsiderate driving and states that a person is to be regarded as driving without reasonable consideration for other persons only if those persons are inconvenienced by their driving. Again, the standard of driving must fall below what would be expected of a competent and careful driver. See the examples above. Prosecutors should be clear as to whether they allege the driving to be careless, inconsiderate or both. If both, this should be reflected in separate charges.
+
+Where drugs or alcohol are involved in the commission of a driving offence, there will be increased culpability and this must be reflected in the appropriate charge if these additional elements can be proved. In these circumstances, an offence of causing death by careless driving when under the influence of drink or drugs, pursuant to section 3A RTA 1988, should be charged rather than the section 2B RTA 1988 offence.
+
+Causing death by careless driving under the influence of drink or drugs
+The offence of causing death by careless driving when under the influence of drink or drugs under section 3A RTA 1988 is defined as being committed when a mechanically propelled motor vehicle is driven on a road or other public place and:
+
+the driving has caused the death of another person;
+the driving was without due care and attention or without reasonable consideration for other road users; and
+the driver is either unfit through drink or drugs, or the alcohol concentration is over the prescribed limited, or the amount of a controlled drug is over the specified limit, or there has been a failure to provide a specimen in pursuance of the RTA 1988.
+Under section 24 of the Road Traffic Offenders Act 1988 (the RTOA 1988) where a defendant is charged with this offence, it is open to the jury, if they are not satisfied that the evidence proves that the driving was careless, to bring in an alternative verdict of driving whilst unfit through drink or drugs (section 4 RTA 1988) or driving with excess alcohol (section 5 RTA 1988) or failing to provide a specimen (section 7 RTA 1988).  However, the RTOA 1988 was not amended when the offence of driving with a controlled drug over the specified limit (section 5A RTA 1988) was introduced and this offence is not available as an alternative verdict for the jury. So where there is evidence that the defendant was driving whilst over the specified limit for a controlled drug, prosecutors should consider adding a separate charge under s3A(1)(ba) of the RTA 1988.  This can then be sent to the Crown Court with the section 3A RTA 1988 charge, as a related offence under section 51(3)(b) of the Crime and Disorder Act 1998.   
+
+Both causing death by dangerous driving, and the offence of causing death by careless driving whilst under the influence of drink or drugs, may be charged where there is sufficient evidence for both. This enables the court to sentence both on the basis of the standard of driving, and of the influence which drink or drugs had upon it. It enables the court to mark both the culpability of the standard of driving and that it had taken place while materially intoxicated. A jury can return a verdict addressing both factual circumstances: that the driving caused death; that the driver was unfit through drink or drugs; that the driving was careless; and, if convicting of the section 1 offence, it was in fact dangerous. Prosecutors may however proceed on one charge where the defendant explicitly accepts they fall to be sentenced on the basis that the other allegation is made out. In particular, the sentencing guidelines allow for intoxication as an aggravating factor. If there is a dispute either as to the standard of driving or the fact the defendant was unfit, this can be addressed by the jury returning a verdict on a count on the indictment: Newton (1983) 77 Cr. App. R. 13, CA.
+
+Causing death by driving while unlicensed or uninsured
+The offence of causing death by driving while unlicensed or uninsured under section 3ZB RTA 1988 is committed when the suspect causes the death of another person by driving a motor vehicle on a road and, at the time of driving, one of the following offences is being committed:
+
+section 87(1) RTA 1988 (driving otherwise than in accordance with a licence)
+section 143 RTA 1988 (using motor vehicle while uninsured or unsecured against third party risks)
+Note that this offence can only be committed by driving a motor vehicle on a road (whereas the section 87(1) and 143 offences may be committed in a public place, and by using rather than necessarily driving a vehicle). Prosecutors should check the relevant authorities for the elements of this offence: for instance, driving may include being in a stationary vehicle, or a vehicle where the engine is not running: Planton v DPP [2001] EWHC Admin 450 and Jones v Prothero [1952] 1 All ER 434.
+
+In Hughes [2013] UKSC 56, the Supreme Court confirmed that “causing death” involves more than simply placing a car on a road. Section 3ZB requires at least some act or omission in the control of the car, which involves some element of fault, whether amounting to careless/inconsiderate driving or not, and which contributes in some more than minimal way to the death.
+
+Where such element of fault is present, in addition to any charge of causing death by dangerous, or careless, driving, an offence or offences contrary to section 3ZB RTA 1988 should be charged. Separate charges should reflect an allegation concerning section 87(1) RTA 1988, and an allegation concerning section 143 RTA 1988.
+
+Causing death by driving whilst disqualified
+This offence at section 3ZC RTA 1988 is subject to similar principles, including the rule in Hughes, above.
+
+Non-fatal driving offences
+Using a Vehicle as a weapon
+As with offences where a death as occurred, where a vehicle has been used as a weapon to cause injury, assault charges contrary to section 18, section 20 or section 47 of the Offences Against the Person Act 1861 (OAPA 1861) should always be charged where there is a realistic prospect of conviction. Prosecutors should also consider charging relevant road traffic offences to enable a sentencing court to order disqualification or a re-test where appropriate. In some cases, assault offences may be the only available charge, rather than road traffic offences, for instance where the driving has occurred other than on a road or other public place, or when the vehicle driven was not mechanically propelled and death has been caused.
+
+Causing serious injury by dangerous driving, or by careless or inconsiderate driving
+The offences under section 1A or section 2C RTA 1988 are committed when the manner of the defendant's driving is dangerous, or is without due care and attention or reasonable consideration for other road users, and (in either case) results in another person suffering a serious physical injury.
+
+As with offences where a death as occurred, where a vehicle has been used as a weapon to cause injury, assault charges contrary to section 18, section 20 or section 47 of the OAPA 1861 should always be charged, rather than RTA offences, where there is a realistic prospect of conviction. In some cases they may be the only available charge, rather than RTA charges, for instance where the driving has occurred other than on a road or other public place, or when the vehicle driven was not mechanically propelled and death has been caused.
+
+"Serious injury" is defined as "... physical harm which amounts to grievous bodily harm for the purposes of the OAPA 1861" (section 2C (2)(a) RTA 1988).
+
+Causing serious injury by driving: disqualified drivers
+Section 3ZD RTA 1988 provides that a person driving a motor vehicle on a road who causes serious injury to another and is at the time driving while disqualified, contrary to section 103(1)(b) RTA 1988, is guilty of an offence.
+
+Dangerous Driving
+See above for the statutory definition of dangerous driving, the different standard in certain circumstances for designated persons and the examples of what, objectively, may amount to dangerous driving.
+
+The manner of driving must be seen in the context of the surrounding circumstances in which it took place (for example; amount of traffic, visibility, weather conditions, excess speed, etc.). The circumstances in every case will be unique and must be considered in each case before reaching a decision as to the appropriate charge.
+
+Careless Driving
+See above for the statutory definition of careless driving, the different standard in certain circumstances for designated persons and the examples of what, objectively, may amount to careless driving.
+
+Occasionally, a collision may occur where there is no evidence of any mechanical defect, illness of the driver or other explanation to account for why the collision happened. In these cases, a charge of careless driving may be appropriate. In these circumstances, while exercising caution, the case can be put on the basis that there is a very strong inference that the defendant was driving below the standard expected of a competent and careful driver. The prosecution does not have to disprove every conceivable explanation for a collision or observed bad driving before a defendant can be convicted of dangerous driving. The evidence of what happened, and an absence of any apparent alternative explanation, may lead a court to infer that the defendant drove carelessly and that they should be convicted.
+
+In some cases, particularly where there has been a collision, the evidence will show that more than one driver was at fault. It will be necessary to establish that there is evidence from an independent source against any driver who is to be charged, but the possibility of charging more than one driver remains if both have failed to comply with the statutory standard.
+
+Prosecutors should also consider whether a driver has failed to observe a provision of the Highway Code. This does not itself render that person liable to criminal proceedings, but a failure, particularly a serious one, may constitute evidence of careless or even dangerous driving; see section 38(7) RTA 1988.
+
+Driving without reasonable consideration
+As set out above, the offence of driving without reasonable consideration under section 3 RTA 1988 is committed only when other persons are inconvenienced by the manner of the defendant's driving, see section 3ZA(4) RTA 1988. Prosecutors should decide whether to charge this offence or careless driving or both.
+
+Wanton and Furious Driving
+The offence of wanton and furious driving under section 35 OAPA 1861 is committed when bodily harm (i.e. injury) is caused to any person as a result of the manner of driving of a suspect and is not limited to motor vehicles but covers any kind of vehicle or carriage including bicycles. Prosecutors should note that section 35 OAPA 1861 creates a number of separate offences and prosecutors should decide whether to indict “wanton driving”, “wilful neglect” or “wilful misconduct”. The test for “wanton driving” is set out below. “Wilful neglect” indicates a deliberate failure to take care. “Wilful misconduct” indicates a deliberate action which is unacceptable or improper. As this offence is triable only on indictment and attracts up to two years’ imprisonment, it should be reserved for intentional or reckless acts or omissions i.e. acts or omissions consciously undertaken to bring about an outcome (whatever the motive), or acts or omissions undertaken having recognised the risk of an outcome and nonetheless proceeded unreasonably to take that risk.
+
+As to wanton driving, see R v Knight [2004] EWCA Crim 2998:
+
+" ... the defendant was driving in such a manner as to create an obvious and serious risk of causing physical harm to some other person who might happen to be using the road, or doing substantial damage to property and that in driving in that manner she did so without having given any thought to the possibility of there being any such risk, or having recognised that there was some risk involved, had nonetheless gone on to take it."
+
+Prosecutors more usually will prosecute for an offence under the RTA 1988 (or a homicide offence or offence against the person), however, this offence may be appropriate for example:
+
+when the driving was not on a road or other public place
+when the vehicle used was not a mechanically propelled vehicle (such as a bicycle or horse drawn vehicle)
+when a Notice of Intended Prosecution has not been given but nonetheless this offence is made out, applying the Code for Crown Prosecutors
+Public interest considerations
+In addition to the public interest framework of the Code for Crown Prosecutors, further guidance applies to:
+
+drivers of emergency vehicles
+close friends and family cases
+cases where the driver only suffers serious injury
+Drivers of emergency service vehicles
+If there is sufficient evidence for an offence, applying the correct standard under the Road Traffic Act 1988 (including the amendments made by the Police, Crime, Sentencing and Courts Act 2022), prosecutors will consider whether a prosecution is required in the public interest.
+
+The starting point is that every individual case must be considered on its own facts and merits but that it is unlikely to be in the public interest to prosecute a professional responding to an emergency. Emergency, in this context, means there is a known or reasonably perceived risk to life. However, prosecutors should have regard to the following factors:
+
+whether or not the emergency was known or reasonably perceived to involve a threat to life, so as to be proportionate to the risk to life in the driving – this is likely to be an important public interest factor
+whether or not the driver complied with the relevant policies for such driving
+the degree to which the driving was poor
+whether the driver had an exemplary driving record or whether there is evidence that the driver is a continuing danger to others
+These principles might also apply in exceptional circumstances where non-emergency workers find themselves in circumstances where they are responding to an emergency e.g. driving a sick child to a hospital with no alternative means to meet the emergency.
+
+Death in driving cases where the victim is a close friend or relative of the driver ("close friends and family" cases)
+Whilst there may be sufficient evidence to prosecute, it should be recognised that a prosecution may not be required in the public interest where the suspect:
+
+will suffer substantial or life-long consequences or substantial from losing a loved one and being responsible for that loss
+the culpability of their driving was low
+there is no evidence that they present a continuing danger to other road users
+It has never been the rule that where there is sufficient evidence to prosecute, a prosecution must always follow, even for serious offences. There is room for compassion, even where a fatality has occurred. However, in a case where higher culpability is present (for instance, a prolonged period of dangerous driving or intoxicated driving) a prosecution is likely to be required in the public interest. The need to ensure the safety of other road users must also be weighed into the balance. If there is evidence to suggest that an individual may present a continuing danger to other road users, the proper course will be to prosecute that individual, for example, if they have previous relevant convictions or a medical condition.
+
+Serious injury suffered by the driver only
+Whilst there may be sufficient evidence to prosecute, it should be recognised that a prosecution may not be required in the public interest where the suspect:
+
+the suspect will suffer life-long or substantial consequences as a result of their injuries from bad driving without comparable harm to any other person
+the culpability of their driving was low
+there is no evidence that they present a continuing danger to other road users
+General issues of relevance to driving offences
+In addition to the assessment of the evidence and the public interest, the following guidance is offered in respect of other aspects of the Code for Crown Prosecutors including the acceptance of pleas and selection of charges as well as broader case handling considerations.
+
+Referral of Fatal Collision/Manslaughter Cases
+To ensure consistency of approach, charging decisions in all fatal collision cases should be approved by a Chief Crown Prosecutor (CCP), Deputy Chief Crown Prosecutor (DCCP) or nominated senior decision maker (who will have been nominated for this role by their CCP/DCCP). This must include approval of the Allocation representations to be made by the prosecution. Particular care must be taken in deciding on these representations, recording the decision and articulating it in court.
+
+Driving cases where corporate manslaughter is being considered should be referred to Special Crime Division for advice. Cases should also be referred to Special Crime Division where a fatality is caused by police driving, or where there is a police pursuit which is a cause of death. For cases where the police pursuit is a cause of death, see the Deaths in Custody legal guidance.
+
+Terminology
+The term collision and not "accident" must be used. It is particularly important when the manner of death has resulted in death or serious injury to a victim to use the term "fatal collision" or "collision" in all correspondence, conversations at court and in meetings.
+
+Victim and Witness Care
+The CPS offers a direct service to bereaved families in a number of qualifying offences including all the fatal collision offences outlined in this guidance. Prosecutors are referred to the Homicide Cases – Guidance on CPS service to bereaved families and to the Victim Communication and Liaison (VCL) Scheme which includes specific reference to the practicalities of arranging and conducting meetings with bereaved families.
+
+Bail
+Where there are substantial grounds for believing there is a risk of the defendant committing further offences on bail, failing to surrender or interfering with witnesses, prosecutors should oppose bail, whether pre- or post-charge, and appeal bail if appropriate. This is of the greatest important where the defendant presents a risk to the public through the continued commission of driving offences.
+
+Acceptance of Pleas
+Prosecutors are reminded of the following in relation to acceptance of pleas:
+
+Any decision to accept a plea to a lesser offence in fatal collision cases must be approved by the CCP/DCCP or nominated senior decision maker (who will have been nominated for this role by their CCP/DCCP).
+Prosecutors should consult the victim or the bereaved family before any decision to accept a plea to a less serious offence is made. This also applies to circumstances where the defendant indicates a guilty plea based on certain specified facts. The final decision rests with the prosecution, informed by the views of the victim or bereaved family.
+Note the Criminal Practice Direction VII B: Determining the factual basis of sentencing at paragraph B2: where a guilty plea is offered to less than the whole indictment and where the prosecution advocate is considering whether to accept a plea to a lesser charge, the advocate may invite the judge to approve the proposed course of action. In such circumstances, the advocate must abide by the decision of the judge.
+The scrupulous application of Part 9 (accepting guilty pleas) of the Code for Crown Prosecutors, and the Attorney General's Guidelines on the Acceptance of Pleas and the Prosecutor's Role in the Sentencing Exercise, is critical.
+Sentencing
+Prosecutors should invite the court to impose an interim disqualification upon conviction where available. Prosecutors should make sure that the court has all the information it needs to sentence. This should include the Victim Personal Statement and any information in order to impose an appropriate disqualification (and, where appropriate, re-test) requirement.
+
+Offences involving Corporate Bodies
+Prosecutors should ensure that cases involving a suspect's manner of driving relating to a workplace are reviewed not only to establish whether the driver should be prosecuted for any offence or offences, but also to determine whether there is evidence the driver's employer has committed an offence or offences. In these circumstances, prosecutors should refer to the Corporate Manslaughter legal guidance for more information. Where there is evidence that indicates the possibility of charging corporate manslaughter, such cases must be referred to the Special Crime Division.
+
+The CPS has a protocol with the Health and Safety Executive, the Local Government Association and the police for the investigation and prosecution of work-related deaths and prosecutors should ensure that there is early liaison in appropriate cases where such a death has been caused because of a driving offence. See Work Related Deaths: a Protocol for Liaison and Work Related Deaths Protocol: Practical Guide. See also the legal guidance Relations with Other Prosecuting Agencies.
+
+Commission of a number of offences
+A number of potential offences may be disclosed in the course of a driving incident. Prosecutors will need to consider whether more minor offences add anything to the presentation of the case or the court’s powers. Multiple offences might better be charged with a single more serious charge which is merited cumulatively (e.g. dangerous driving comprising a series of offences concerning the state of a vehicle and how it is driven). Multiple offences may better cover the range of offending, or justify consecutive sentences. The decision on charges should scrupulously reflect section 6 of the Code for Crown Prosecutors.
+
+Seizure of Vehicles - Fatality or Serious Injury cases
+In cases where a fatality or serious injury results, consideration should be given to the seizure and retention of the vehicle in its post-collision condition until the conclusion of the case, and after any periods for an appeal have elapsed. This allows an opportunity for expert examination of the vehicle.
+
+This is because the condition of the vehicle involved in a road collision may be relevant in explaining why the collision happened, for example, a mechanical defect. In this respect, the Court of Appeal has stated in the case of R v Beckford [1996] 1 Cr. App. R. 94 that the police should have established procedures to ensure that no car involved in a collision could be scrapped without their express permission. The police should not allow a car to be destroyed where serious criminal charges are to be brought, which might involve the possibility of some mechanical defect to the vehicle becoming a potential issue in the case.
+
+However, in some circumstances, it may be appropriate for the police to seize specific defective parts of a vehicle or provide photographic or laser scanned records. It is desirable if consultation takes place with those representing the suspect/defendant before such a course of action is taken.
+
+Alternative verdicts
+Section 24 RTOA 1988 allows for the return of alternative verdicts where the allegations in the indictment amount to, or include an allegation of an offence specified in the table set out in that section. The section applies to magistrates’ courts as well as to juries, provided the magistrates' court have jurisdiction to try the "Offence charged". The alternatives are set out in the table at the end of section 24 (1) RTOA 1988.

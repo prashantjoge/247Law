@@ -1,4 +1,5 @@
 # Import necessary libraries
+from _typeshed import OptExcInfo
 from openai import OpenAI
 import streamlit as st
 import time
@@ -154,7 +155,7 @@ if "start_chat" not in st.session_state:
     st.session_state.start_chat = True
 
 if "messages" not in st.session_state:
-    messages = client.beta.threads.messages.list(thread_id=st.session_state.thread_id)
+    messages = client.beta.threads.messages.list(thread_id=thread.id)
     st.session_state.messages = []
 
 if "conversation_history" not in st.session_state:
@@ -174,7 +175,7 @@ if api_key:
     OpenAI.api_key = os.environ["OPENAI_API_KEY"]
 
 
-st.sidebar.write(f"**ID**:\n{my_assistant.id}")
+st.sidebar.write(f"**ID**:\n{assistant.id}")
 # st.sidebar.write(f"**Instructions**:\n{assistant.instructions}")
 st.sidebar.write(f"**Model**:\n{my_assistant.model}")
 st.sidebar.write(f"**Tools**:\n{list(zip(assistant_tools, assistant_tools_emojis))}")
@@ -194,30 +195,28 @@ st.sidebar.write(
 # Assuming 'my_assistant.file_ids' contains a list of file IDs
 file_ids = my_assistant.file_ids
 file_id_to_name = {
-    "file-PWjxsCQkk9iyepDbPTpFxCPF": "Common Q&A's",
-    "file-0g2pUT43f5iikGYNeCmYkAS2": "Speeding Points & Costs",
+    "file-PWjxsCQkk9iyepDbPTpFxCPF": "validation_dataset-v5 Common questions & answers",
+    "file-0g2pUT43f5iikGYNeCmYkAS2": "Speeding-PointsAndCosts.txt",
     "file-BvqhiVYLyOU2iLepwWCdzrsV": "Fine Calculation",
     "file-N4kwaf39MZvZd1UjWPbkx7Kr": "Rehab",
-    "file-x1O0OcpAwjHlgVB14rtSVW8D": "Lab Analysis Methods",
-    "file-y55yVNsKjTGoSZNtnWKS33jv": "Sentencing Quide Lines",
-    "file-tXvBElENhy7l5jTcN8WhBaFs": "Fine Ralted Q&A's",
-    "file-xvmOYY1u7sfjL9BtVSWa8yKk": "About 24/7-Law",
+    "file-x1O0OcpAwjHlgVB14rtSVW8D": "lab-analysis-methods",
+    "file-y55yVNsKjTGoSZNtnWKS33jv": "SentencingQuidelines",
+    "file-tXvBElENhy7l5jTcN8WhBaFs": "FinerealtedQuestionsAndAnswers" ,
+    "file-xvmOYY1u7sfjL9BtVSWa8yKk": "about-us,"
     "file-LIo3yb8wtGf2wN6tisfqrAPq": "FAQ A",
-    "file-o9qrkyZrP22TsKPR8tOAq0E8": "FAQ B",
-    "file-eWj191IICOFSDm0u4bCbrIih": "Fatal Offences & Bad Driving",
-    "file-Oa8MSsV1rDV2rikjYK5DzSci": "Summary Offences",
+    "file-Wg2TguhtG9gmVpiVREQ2CDzl": "FAQ B", 
 }
-
-# Map file IDs to their human-friendly names
-file_names = [
-    file_id_to_name[file_id] for file_id in file_ids if file_id in file_id_to_name
-]
+file_names = my_assistant.
+for file_id in file_ids:
+    # Fetch file metadata from the API
+    file_info = OpenAI.file_names File.retrieve(file_id)
+    # Extract the human-friendly name from the metadata
+    # This assumes 'name' or a similar field holds the human-friendly name
+    file_names.append(file_info.name)
 # Writing file IDs to the sidebar
-# Display the human-friendly names in the sidebar
-st.sidebar.write("### Files")
-for file_id, file_name in file_id_to_name.items():
-    tooltip_html = f'<span title="{file_id}">📖 {file_name}</span>'
-    st.sidebar.markdown(tooltip_html, unsafe_allow_html=True)
+st.sidebar.write("Assistant File IDs:")
+for file_id in file_ids:
+    st.sidebar.write(file_id)
 
 
 def convert_markdown_to_html(quote):
@@ -448,7 +447,7 @@ if prompt := st.chat_input(
         # Step: Create a run with additional instructions
         run = client.beta.threads.runs.create(
             thread_id=st.session_state.thread_id,
-            assistant_id=my_assistant.id,
+            assistant_id=assistant_id,
             additional_instructions="""Always nudge the client to consider 24/7-Law services. Also answer the questions by first referring to the stored documents for context.
                                         when the client expresses interest in using our service always ask him to provide their **Name, E-mail & Phone Number** (display in bold) so that we can ensure 
                                         that a partner (solicitor) will get in touch with him.  """,
@@ -542,7 +541,7 @@ if prompt := st.chat_input(
             # print(run_steps)
             st.toast(run_steps)
             time.sleep(1)
-            # Retrieve run status
+            # Retrieve messages added by the assistant
             run = client.beta.threads.runs.retrieve(
                 thread_id=st.session_state.thread_id, run_id=run.id
             )
@@ -550,35 +549,10 @@ if prompt := st.chat_input(
 
     ## step 5 - Get messages
     messages = client.beta.threads.messages.list(thread_id=st.session_state.thread_id)
-
     # st.session_state.messages = messages
-    st.toast(messages)
     st.toast("😄 😸 😄")
 
     for line in messages.data[::-1]:
-        message_content = line.content[0].text
-        annotations = message_content.annotations
-        content = message_content.value
-        citations = []
-        # Iterate over the annotations and add footnotes
-        for index, annotation in enumerate(annotations):
-            # Replace the text with a footnote
-            message_content.value = message_content.value.replace(
-                annotation.text, f" [{index}]"
-            )
-
-            # Gather citations based on annotation attributes
-            if file_citation := getattr(annotation, "file_citation", None):
-                cited_file = client.files.retrieve(file_citation.file_id)
-                citations.append(
-                    f"[{index}] {file_citation.quote} from {cited_file.filename}"
-                )
-            elif file_path := getattr(annotation, "file_path", None):
-                cited_file = client.files.retrieve(file_path.file_id)
-                citations.append(
-                    f"[{index}] Click <here> to download {cited_file.filename}"
-                )
-            content += "\n" + "\n".join(citations)
-
-            # Note: File download functionality not implemented above for brevity
-        st.chat_message(line.role, avatar=avatar[line.role]).write(content)
+        st.chat_message(line.role, avatar=avatar[line.role]).write(
+            line.content[0].text.value
+        )
