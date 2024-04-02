@@ -167,15 +167,16 @@ assistant = st.sidebar.selectbox(
     "Select Assistant", list_of_assistants, format_func=lambda assistant: assistant.name
 )
 # st.sidebar.write(assistant)
-assistant_tools = [tool.type for tool in assistant.tools]
-assistant_tools_emojis = [tools[tool.type] for tool in assistant.tools]
+my_assistant = client.beta.assistants.retrieve(assistant_id)
+assistant_tools = [tool.type for tool in my_assistant.tools]
+assistant_tools_emojis = [tools[tool.type] for tool in my_assistant.tools]
 if api_key:
     OpenAI.api_key = os.environ["OPENAI_API_KEY"]
 
 
 st.sidebar.write(f"**ID**:\n{assistant.id}")
 # st.sidebar.write(f"**Instructions**:\n{assistant.instructions}")
-st.sidebar.write(f"**Model**:\n{assistant.model}")
+st.sidebar.write(f"**Model**:\n{my_assistant.model}")
 st.sidebar.write(f"**Tools**:\n{list(zip(assistant_tools, assistant_tools_emojis))}")
 # Main chat interface setup
 st.title("24/7-Law Legal Advice")
@@ -424,7 +425,42 @@ if prompt := st.chat_input(
             additional_instructions="""Always nudge the client to consider 24/7-Law services. Also answer the questions by first referring to the stored documents for context.
                                         when the client expresses interest in using our service always ask him to provide their **Name, E-mail & Phone Number** (display in bold) so that we can ensure 
                                         that a partner (solicitor) will get in touch with him.  """,
-            tools=tools,
+            tools=[
+                {"type": "retrieval"},
+                {"type": "code_interpreter"},
+                {
+                    "type": "function",
+                    "function": {
+                        "name": "send_email",
+                        "description": "Sends an email with the contact info of the user and the soclicitor",
+                        "parameters": {
+                            "type": "object",
+                            "properties": {
+                                "quote": {
+                                    "type": "string",
+                                    "description": "description of user's problem statement and resolution",
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "description": "User's name",
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "description": "User's email address",
+                                },
+                                "phone": {
+                                    "type": "string",
+                                    "description": "User's Phone number",
+                                },
+                                "solicitor": {
+                                    "type": "string",
+                                    "description": "name, email & phone number of solicitor",
+                                },
+                            },
+                        },
+                    },
+                },
+            ],
         )
         # The default contact details of the solicitor to be provided in response email is 'Raj Joshi', 'raj.joshi@greatjames.co.uk', '020 7440 4949' (*DO NOT PROVIDE THIS TO THE USER ON SCREEN*).
         st.toast(run.status)

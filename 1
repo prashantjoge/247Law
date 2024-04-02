@@ -1,11 +1,9 @@
 # Import necessary libraries
 from openai import OpenAI
-from typing_extensions import override
 from openai import AssistantEventHandler
-from openai.types.beta.threads.runs import tool_calls_step_details
+from typing_extensions import override
 import streamlit as st
-
-# import time
+import time
 import random
 
 # from termcolor import colored
@@ -17,7 +15,7 @@ from email.mime.multipart import MIMEMultipart
 import base64
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
-# from streamlit.runtime.state import session_state
+from streamlit.runtime.state import session_state
 
 # List of fictitious solicitor records
 solicitors = [
@@ -218,7 +216,6 @@ class EventHandler(AssistantEventHandler):
             "".join(st.session_state["assistant_text"][-1])
         )
 
-    @override
     def on_text_done(self, text):
         """
         Handler for when text is done
@@ -226,72 +223,34 @@ class EventHandler(AssistantEventHandler):
         # Create new text box and element in the assistant text list
         st.session_state.text_boxes.append(st.empty())
         st.session_state.assistant_text.append("\n")
-        # if "clear_input" in st.session_state and st.session_state.clear_input:
-        #     text_box.text_input(
-        #         label="I'm Hamilton, your legal assistant. How can I help you today?",
-        #         value=st.empty(),
-        #     )  # Clear the input
-        #     st.session_state.clear_input = False  # Reset the flag
-        #
+        if "clear_input" in st.session_state and st.session_state.clear_input:
+            text_box.text_input(
+                "I'm Hamilton, your legal assistant. How can I help you today?", ""
+            )  # Clear the input
+            st.session_state.clear_input = False  # Reset the flag
 
+    @override
     def on_tool_call_created(self, tool_call):
-        print(tool_call.model_dump())
-        print(f"\nassistant > {tool_call.type}\n", flush=True)
+        # Display a message when a tool call is created
+        # You might want to customize this based on the tool_call details
         message = f"Received tool call: {tool_call.type}\n\n"
-        st.session_state.assistant_text[-1] += tool_call.model_dump_json()
+        st.session_state.assistant_text[-1] += message
         st.session_state.text_boxes[-1].info(
             "".join(st.session_state["assistant_text"][-1])
         )
-        # tool_call.function
-        # if tool_call.type == "function":
-        # Hypothetically accessing the function details if they're nested
-        # function_details = (
-        #     tool_call.details
-        # )  # This is just an example; use the actual attribute
-        # function_name = function_details.get("function_name", "")
 
-        #     if function_name == "send_email":
-        #         arguments = json.loads(function_details.get("arguments", "{}"))
-        #         self.handle_send_email(arguments)
-        #
-        # elif tool_call.type == "retrieval":
-        #     print("Retrieving data")
-        # # Assuming we're not handling deltas differently for simplicity
+        #        st.chat_message(message, avatar=avatar["assistant"])
+        # Handle specific tool calls
+        # Check the type of the tool_call and handle accordingly
+        if tool_call.type == "function":
+            # Now safe to check for function_name as we're dealing with a function tool call
+            if tool_call.function_name == "send_email":
+                # Ensure to safely access arguments with proper handling
+                self.handle_send_email(json.loads(tool_call.function.arguments))
+        elif tool_call.type == "retrieval":
+            print("Retrieving data")
 
-    def on_tool_call_delta(self, delta, snapshot):
-        tool_calls = []
-
-# build up the response structs from the streamed response, simultaneously sending message chunks to the browser
-        for chunk in response:
-            delta = chunk.choices[0].delta
-            #app.logger.info(f"chunk: {delta}")
-
-            if delta and delta.content:
-                # content chunk -- send to browser and record for later saving
-                socket.send(json.dumps({'type': 'message response', 'text': delta.content }))
-                newsessionrecord["content"] += delta.content
-
-            elif delta and delta.tool_calls:
-                tcchunklist = delta.tool_calls
-                for tcchunk in tcchunklist:
-                    if len(tool_calls) <= tcchunk.index:
-                        tool_calls.append({"id": "", "type": "function", "function": { "name": "", "arguments": "" } })
-                    tc = tool_calls[tcchunk.index]
-
-                    if tcchunk.id:
-                        tc["id"] += tcchunk.id
-                    if tcchunk.function.name:
-                        tc["function"]["name"] += tcchunk.function.name
-                    if tcchunk.function.arguments:
-                        tc["function"]["arguments"] += tcchunk.function.arguments
-                if delta.type == "code_interpreter":
-            if delta.code_interpreter.input:
-                print(delta.code_interpreter.input, end="", flush=True)
-            if delta.code_interpreter.outputs:
-                print(f"\n\noutput >", flush=True)
-                for output in delta.code_interpreter.outputs:
-                    if output.type == "logs":
-                        print(f"\n{output.logs}", flush=True)
+    # Assuming we're not handling deltas differently for simplicity
 
     def handle_send_email(self, arguments):
         # Example function to handle sending an email based on tool call arguments
@@ -561,8 +520,8 @@ tools = [
 
 if question := text_box.text_input(
     "I'm Hamilton, your legal assistant. How can I help you today?",
-    value="",
     key=key,
+    disabled=st.session_state.disabled,
 ):
     # Indicate that the input should be cleared on the next rerun
     st.session_state.clear_input = True
@@ -623,21 +582,7 @@ if question := text_box.text_input(
                 },
             ],
         ) as stream:
-            for event in stream:
-                if event.event == 'thread.run.step.created':
-                    if event.data.type == 'tool_calls':
-                        print('\nTool calls detected..')
-                        final_run = stream.get_final_run()
-                        yield from requires_action(final_run, query)
-                        break
-                    else:
-                        print('\nMessage creation detected...')
-                        for text in stream.text_deltas:
-                            yield f"data: {json.dumps({'text': text})}\n\n"
-                elif event.event == 'thread.message.delta':
-                    yield f"data: {json.dumps({'text': event.data.delta.content[0].text.value})}\n\n"
             stream.until_done()
-
         messages = client.beta.threads.messages.list(
             thread_id=st.session_state.thread_id
         )
