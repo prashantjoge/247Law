@@ -261,38 +261,38 @@ class EventHandler(AssistantEventHandler):
     def on_tool_call_delta(self, delta, snapshot):
         tool_calls = []
 
-# build up the response structs from the streamed response, simultaneously sending message chunks to the browser
-        for chunk in response:
-            delta = chunk.choices[0].delta
-            #app.logger.info(f"chunk: {delta}")
-
-            if delta and delta.content:
-                # content chunk -- send to browser and record for later saving
-                socket.send(json.dumps({'type': 'message response', 'text': delta.content }))
-                newsessionrecord["content"] += delta.content
-
-            elif delta and delta.tool_calls:
-                tcchunklist = delta.tool_calls
-                for tcchunk in tcchunklist:
-                    if len(tool_calls) <= tcchunk.index:
-                        tool_calls.append({"id": "", "type": "function", "function": { "name": "", "arguments": "" } })
-                    tc = tool_calls[tcchunk.index]
-
-                    if tcchunk.id:
-                        tc["id"] += tcchunk.id
-                    if tcchunk.function.name:
-                        tc["function"]["name"] += tcchunk.function.name
-                    if tcchunk.function.arguments:
-                        tc["function"]["arguments"] += tcchunk.function.arguments
-                if delta.type == "code_interpreter":
-            if delta.code_interpreter.input:
-                print(delta.code_interpreter.input, end="", flush=True)
-            if delta.code_interpreter.outputs:
-                print(f"\n\noutput >", flush=True)
-                for output in delta.code_interpreter.outputs:
-                    if output.type == "logs":
-                        print(f"\n{output.logs}", flush=True)
-
+    # # build up the response structs from the streamed response, simultaneously sending message chunks to the browser
+    #         for chunk in response:
+    #             delta = chunk.choices[0].delta
+    #             #app.logger.info(f"chunk: {delta}")
+    #
+    #             if delta and delta.content:
+    #                 # content chunk -- send to browser and record for later saving
+    #                 socket.send(json.dumps({'type': 'message response', 'text': delta.content }))
+    #                 newsessionrecord["content"] += delta.content
+    #
+    #             elif delta and delta.tool_calls:
+    #                 tcchunklist = delta.tool_calls
+    #                 for tcchunk in tcchunklist:
+    #                     if len(tool_calls) <= tcchunk.index:
+    #                         tool_calls.append({"id": "", "type": "function", "function": { "name": "", "arguments": "" } })
+    #                     tc = tool_calls[tcchunk.index]
+    #
+    #                     if tcchunk.id:
+    #                         tc["id"] += tcchunk.id
+    #                     if tcchunk.function.name:
+    #                         tc["function"]["name"] += tcchunk.function.name
+    #                     if tcchunk.function.arguments:
+    #                         tc["function"]["arguments"] += tcchunk.function.arguments
+    #                 if delta.type == "code_interpreter":
+    #             if delta.code_interpreter.input:
+    #                 print(delta.code_interpreter.input, end="", flush=True)
+    #             if delta.code_interpreter.outputs:
+    #                 print(f"\n\noutput >", flush=True)
+    #                 for output in delta.code_interpreter.outputs:
+    #                     if output.type == "logs":
+    #                         print(f"\n{output.logs}", flush=True)
+    #
     def handle_send_email(self, arguments):
         # Example function to handle sending an email based on tool call arguments
         recipient = arguments.get("recipient")
@@ -623,19 +623,6 @@ if question := text_box.text_input(
                 },
             ],
         ) as stream:
-            for event in stream:
-                if event.event == 'thread.run.step.created':
-                    if event.data.type == 'tool_calls':
-                        print('\nTool calls detected..')
-                        final_run = stream.get_final_run()
-                        yield from requires_action(final_run, query)
-                        break
-                    else:
-                        print('\nMessage creation detected...')
-                        for text in stream.text_deltas:
-                            yield f"data: {json.dumps({'text': text})}\n\n"
-                elif event.event == 'thread.message.delta':
-                    yield f"data: {json.dumps({'text': event.data.delta.content[0].text.value})}\n\n"
             stream.until_done()
 
         messages = client.beta.threads.messages.list(
