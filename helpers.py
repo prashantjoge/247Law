@@ -1,3 +1,4 @@
+import streamlit as st
 from constants import (
     solicitors,
     assistant_id,
@@ -7,6 +8,7 @@ from constants import (
     quote_context,
     tools,
     gpt_model,
+    api_key,
     additional_instructions,
 )
 
@@ -73,6 +75,20 @@ def convert_markdown_to_html(quote):
     return quote_html
 
 
+def list_assistant_files(my_assistant):
+    tooltip_html = ""
+    # Assuming 'my_assistant.file_ids' contains a list of file IDs
+    file_ids = my_assistant.file_ids
+    # Map file IDs to their human-friendly names
+    file_names = [
+        file_id_to_name[file_id] for file_id in file_ids if file_id in file_id_to_name
+    ]
+    for file_id, file_name in file_id_to_name.items():
+        tooltip_html += f'<span title="{file_id}">📖 {file_name}</br></span>'
+
+    return tooltip_html
+
+
 def get_quote_from_conversation_context(conversation_history):
     # Implement the summary generation logic here
     """
@@ -87,14 +103,13 @@ def get_quote_from_conversation_context(conversation_history):
     # Join the conversation history into a single string, each statement separated by newlines
     # conversation_text = "\n".join(conversation_history)
     # Append a prompt for the AI to generate a summary at the end of the conversation history
-    conversation_history.append(
-        {
-            "role": "system",
-            "content": {quote_context},
-        }
-    )
+    print("quote context:", quote_context)
+    # Prevent duplicate entries
+    if conversation_history[-1]["content"] != quote_context:
+        conversation_history.append({"role": "system", "content": quote_context})
+
     client = OpenAI()
-    # print(api_key)
+    print(api_key)
     print("conversation history", conversation_history)
     client.api_key = api_key
     # Prepare the prompt for GPT-3
@@ -109,5 +124,5 @@ def get_quote_from_conversation_context(conversation_history):
         return summary
 
     except Exception as e:
-        print(f"Error generating summary: {e}")
+        st.toast(f"Error generating summary: {e}")
         return "Summary generation failed."

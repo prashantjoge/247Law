@@ -13,6 +13,7 @@ from constants import (
     instructions,
     additional_instructions,
     prompt,
+    api_key,
 )
 from helpers import (
     get_random_solicitor,
@@ -20,9 +21,11 @@ from helpers import (
     remove_background,
     convert_markdown_to_html,
     get_quote_from_conversation_context,
+    list_assistant_files,
 )
 
 # from termcolor import colored
+from email_assistant import call_custom_assistant_with_kb
 import os
 import datetime
 import json
@@ -54,8 +57,6 @@ st.sidebar.title("🤖 GPTs")
 # st.write(st.session_state)
 
 
-# api_key = os.environ["OPENAI_API_KEY"]
-api_key = st.secrets["OPENAI_API_KEY"]
 OpenAI.api_key = api_key
 # Initialize the OpenAI client (ensure to set your API key in the sidebar within the app)
 client = OpenAI()
@@ -105,18 +106,7 @@ st.sidebar.write(f"*{st.session_state.thread_id}*")
 st.sidebar.write(
     f"Created at {datetime.datetime.fromtimestamp(st.session_state.created_at)}"
 )
-# Assuming 'my_assistant.file_ids' contains a list of file IDs
-file_ids = my_assistant.file_ids
-# Map file IDs to their human-friendly names
-file_names = [
-    file_id_to_name[file_id] for file_id in file_ids if file_id in file_id_to_name
-]
-# Writing file IDs to the sidebar
-# Display the human-friendly names in the sidebar
-st.sidebar.write("### Files")
-for file_id, file_name in file_id_to_name.items():
-    tooltip_html = f'<span title="{file_id}">📖 {file_name}</span>'
-    st.sidebar.markdown(tooltip_html, unsafe_allow_html=True)
+st.sidebar.markdown(list_assistant_files(my_assistant), unsafe_allow_html=True)
 
 
 def google_autorization():
@@ -280,7 +270,7 @@ if prompt := st.chat_input(prompt):
         run = client.beta.threads.runs.create(
             thread_id=st.session_state.thread_id,
             assistant_id=my_assistant.id,
-            instructions=instructions,
+            # instructions=instructions,
             additional_instructions=additional_instructions,
             tools=tools,
         )
@@ -290,9 +280,11 @@ if prompt := st.chat_input(prompt):
         ## Step: Get run's status and steps
         # Poll for the run to complete and retrieve the assistant's messages
         # with st.spinner("Wait... Generating response..."):
-
+        runs = 0
         while run.status != "completed":
             # time.sleep(1)
+            runs += 1
+            print("run:", runs)
             run_steps = client.beta.threads.runs.steps.list(
                 thread_id=st.session_state.thread_id, run_id=run.id
             )
@@ -310,9 +302,14 @@ if prompt := st.chat_input(prompt):
                 # Check if the required action is 'send_email' before proceeding
                 if action_name == "send_email":
                     # if "quote" not in arguments:
-                    quote = get_quote_from_conversation_context(
-                        st.session_state.conversation_history
+                    quote = call_custom_assistant_with_kb(
+                        st.session_state.conversation_history,
+                        st.session_state.thread_id,
                     )
+
+                    # quote = get_quote_from_conversation_context(
+                    #    st.session_state.conversation_history
+                    # )
                     html_quote = convert_markdown_to_html(quote)
                     arguments["quote"] = html_quote
                     print("Quote Generated: ", arguments["quote"])

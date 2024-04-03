@@ -1,0 +1,43 @@
+from openai import OpenAI
+from constants import (
+    solicitors,
+    assistant_id,
+    avatar_kv,
+    tools_kv,
+    file_id_to_name,
+    quote_context,
+    tools,
+    gpt_model,
+    api_key,
+    additional_instructions,
+    email_assistant_id,
+)
+
+
+def call_custom_assistant_with_kb(conversation_history):
+    """
+    Calls a custom OpenAI assistant, ensuring it utilizes its configured knowledge base.
+
+    Args:
+    - conversation_history (list of dict): The conversation history.
+    - assistant_id (str): The ID of the custom assistant.
+
+    Returns:
+    - str: The generated response from the assistant.
+    """
+
+    client = OpenAI()
+    OpenAI.api_key = api_key
+
+    my_assistant = client.beta.assistants.retrieve(email_assistant_id)
+    thread = client.beta.threads.create()
+    messages = client.beta.threads.messages.create(
+        thread_id=thread.id, role="user", content=conversation_history
+    )
+
+    try:
+        response = openai.Assistant(assistant_id).chat(messages=conversation_history)
+        return response.choices[0].message["content"]
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return "Failed to generate response."

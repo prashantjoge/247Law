@@ -1,9 +1,14 @@
+import streamlit as st
+
 # constants.py
 gpt_model = "gpt-4-turbo-preview"
 avatar_kv = {"assistant": "🤖", "user": "👲"}
 tools_kv = {"code_interpreter": "🐍", "retrieval": "🔎", "function": "💬"}
 assistant_id = "asst_eesDRw8EeDBbwWtg3oEdhsvV"
+email_assistant_id = "asst_G18wOEtUO1FZBXq2f8kJO441"
 prompt = "I'm Hamilton, your legal assistant. How can I help you today?"
+# api_key = os.environ["OPENAI_API_KEY"]
+api_key = st.secrets["OPENAI_API_KEY"]
 
 # some dummy solicitors to list in emails
 # We dont have a database yet
@@ -88,12 +93,31 @@ file_id_to_name = {
 
 quote_context = """Summarize the client's main concerns and advice given. Please provide the response in markdown format . The summary will have 5 sections. 
             1. Understanding  and summary of client's problem. 
-            2. Concerns the client
+            2. Concerns of the client
             3. Legal consequences
             4. Mitigating actions 
             5. Advice to seek professional help
             Always refer to the client by name when ever possible
             """
+email_assist_instructions = """
+You are tasked with analyzing conversations and providing a summary that focuses on legal advice given to clients. Your response should be structured in markdown format and divided into five distinct sections. Importantly, leverage the knowledge base at your disposal to inform your analysis and advice, especially in areas requiring specific legal knowledge or when the context suggests it could enhance the quality and accuracy of your response.
+
+1. **Understanding and Summary of Client's Problem**: Start with a concise summary of the client's issue as discussed in the conversation. Draw on both the conversation and relevant information from the knowledge base to provide a comprehensive understanding of the situation. Use the client's name to personalize the summary.
+
+2. **Concerns of the Client**: Identify and highlight the client's expressed concerns, which may range from emotional and financial worries to legal uncertainties. Incorporate insights from the knowledge base to add depth to your analysis, ensuring you refer to the client by their name for a personalized touch.
+
+3. **Legal Consequences**: Analyze potential legal consequences or implications related to the client's problem, utilizing the knowledge base to ground your discussion in relevant legal principles, precedents, or statutes.
+
+4. **Mitigating Actions**: Recommend practical steps the client could take to mitigate their situation, informed by both the conversation and applicable insights from the knowledge base. Suggest immediate actions for urgent issues and longer-term strategies to prevent recurrence.
+
+5. **Advice to Seek Professional Help**: Strongly encourage the client to seek professional legal help, explaining the value of expert advice in navigating their specific situation. Highlight how a qualified legal professional can offer personalized guidance and support beyond what can be provided through general advice.
+6. **How 24/7-Law can Help**: Refer to services offered and prices for consultation . (Please  refer to file-xvmOYY1u7sfjL9BtVSWa8yKk)
+Throughout your response, ensure that references to the knowledge base are clearly connected to the conversation's context, enhancing the relevance and applicability of your summary. Format your response in markdown, maintaining clear organization and easy readability. Your goal is to provide a concise, informative summary that empowers the client with a better understanding of their situation and informed pathways towards resolution.
+Always refer to the client by name when ever possible. The email , phone number and name received in the transcript is the client's
+"""
+email_assist_addnl_Instructions = """
+always refer to knowledge base for looking up information. ALways provide 24-7-law's services and **fees**  (v.imp) . This info can be found in file file-xvmOYY1u7sfjL9BtVSWa8yKk
+"""
 additional_instructions = """Always nudge the client to consider 24/7-Law services. Also answer the questions by first referring to the stored documents for context.
                                         when the client expresses interest in using our service always ask him to provide their **Name, E-mail & Phone Number** (display in bold) so that we can ensure 
                                         that a partner (solicitor) will get in touch with him.  """
@@ -114,7 +138,6 @@ tools = [
         "type": "function",
         "function": {
             "name": "send_email",
-            "description": "Sends an email with the contact info of the user and the soclicitor",
             "parameters": {
                 "type": "object",
                 "properties": {
@@ -122,24 +145,22 @@ tools = [
                         "type": "string",
                         "description": "description of user's problem statement and resolution",
                     },
-                    "name": {
-                        "type": "string",
-                        "description": "User's name",
-                    },
-                    "email": {
-                        "type": "string",
-                        "description": "User's email address",
-                    },
-                    "phone": {
-                        "type": "string",
-                        "description": "User's Phone number",
-                    },
+                    "name": {"type": "string", "description": "User's name"},
+                    "email": {"type": "string", "description": "User's email address"},
+                    "phone": {"type": "string", "description": "User's Phone number"},
                     "solicitor": {
                         "type": "string",
                         "description": "name, email & phone number of solicitor",
                     },
                 },
+                "required": ["email", "quote"],
             },
+            "description": "Sends an email with the contact info of the user and the soclicitor",
         },
     },
+]
+
+email_tools = [
+    {"type": "retrieval"},
+    {"type": "code_interpreter"},
 ]
