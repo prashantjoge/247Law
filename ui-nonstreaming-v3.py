@@ -2,7 +2,25 @@
 from openai import OpenAI
 import streamlit as st
 import time
-import random
+from constants import (
+    assistant_id,
+    avatar_kv,
+    tools_kv,
+    file_id_to_name,
+    quote_context,
+    tools,
+    gpt_model,
+    instructions,
+    additional_instructions,
+    prompt,
+)
+from helpers import (
+    get_random_solicitor,
+    extract_background,
+    remove_background,
+    convert_markdown_to_html,
+    get_quote_from_conversation_context,
+)
 
 # from termcolor import colored
 import os
@@ -21,104 +39,6 @@ from googleapiclient.errors import HttpError
 
 SCOPES = ["https://www.googleapis.com/auth/contacts.readonly"]
 
-solicitors = [
-    {
-        "name": "Elena Smith",
-        "email": "elena.smith@lawpartners.co.uk",
-        "phone": "020 8004 1122",
-        "background": "Elena has a decade of experience handling DUI cases and advocating for safer driving practices.",
-    },
-    {
-        "name": "Michael Brown",
-        "email": "michael.brown@justiceleague.co.uk",
-        "phone": "020 8005 2233",
-        "background": "Michael specializes in defending against speeding tickets and has a strong track record in reducing penalties.",
-    },
-    {
-        "name": "Sophia Johnson",
-        "email": "sophia.johnson@legalsolutions.co.uk",
-        "phone": "020 8006 3344",
-        "background": "With a focus on traffic accident claims, Sophia assists her clients in securing fair compensation.",
-    },
-    {
-        "name": "James Wilson",
-        "email": "james.wilson@thebarristers.co.uk",
-        "phone": "020 8007 4455",
-        "background": "James is known for his expertise in cases of reckless driving and has helped numerous clients avoid license suspension.",
-    },
-    {
-        "name": "Isabella Martinez",
-        "email": "isabella.martinez@lawcorner.co.uk",
-        "phone": "020 8008 5566",
-        "background": "Isabella provides legal assistance for disputes over road usage and right-of-way violations.",
-    },
-    {
-        "name": "Oliver Thomas",
-        "email": "oliver.thomas@thefirm.co.uk",
-        "phone": "020 8009 6677",
-        "background": "Oliver has extensive experience in handling cases involving driving without insurance, offering strategic legal advice.",
-    },
-    {
-        "name": "Amelia Rodriguez",
-        "email": "amelia.rodriguez@legaladvocates.co.uk",
-        "phone": "020 8010 7788",
-        "background": "Amelia focuses on cases of driving under the influence of substances, aiming to provide comprehensive defense strategies.",
-    },
-    {
-        "name": "Lucas White",
-        "email": "lucas.white@solicitorsuk.co.uk",
-        "phone": "020 8011 8899",
-        "background": "Lucas is adept at handling cases involving illegal vehicle modifications, ensuring clients receive knowledgeable representation.",
-    },
-    {
-        "name": "Mia Harris",
-        "email": "mia.harris@thelawoffice.co.uk",
-        "phone": "020 8012 9900",
-        "background": "Mia specializes in pedestrian right-of-way cases and works tirelessly to advocate for victims of road negligence.",
-    },
-    {
-        "name": "Benjamin Clark",
-        "email": "benjamin.clark@justiceworks.co.uk",
-        "phone": "020 8013 0011",
-        "background": "Benjamin offers legal counsel on traffic law compliance for commercial driving operations, helping businesses navigate complex regulations.",
-    },
-]
-
-
-def get_random_solicitor():
-    # Select a random record
-    random_solicitor = random.choice(solicitors)
-
-    # Format the selected solicitor's information and background into a string
-    solicitor_info = f"Name: {random_solicitor['name']}, Email: {random_solicitor['email']}, Phone: {random_solicitor['phone']}, Background: {random_solicitor['background']}"
-
-    return solicitor_info
-
-
-def extract_background(solicitor_info):
-    # Find the start of the "Background" section
-    start = solicitor_info.find("Background: ")
-
-    # Adjust start position to skip the "Background: " part itself
-    start += len("Background: ")
-
-    # Extract the background information
-    background = solicitor_info[start:]
-
-    return background
-
-
-def remove_background(solicitor_info):
-    # Find the start of the "Background" section
-    start = solicitor_info.find("Background: ")
-
-    # If "Background: " is found, extract the string up to this point
-    if start != -1:
-        return solicitor_info[:start].strip()
-    else:
-        # If "Background: " is not found, return the original string
-        return solicitor_info
-
 
 # Set up the Streamlit page with a title and icon
 #
@@ -129,11 +49,8 @@ st.set_page_config(
     page_title="ChatGPT-like Chat App for 24/7-Law", page_icon=":speech_balloon:"
 )
 
-st.session_state.openai_model = "gpt-4-turbo-preview"
+st.session_state.openai_model = gpt_model
 st.sidebar.title("🤖 GPTs")
-avatar = {"assistant": "🤖", "user": "👲"}
-tools = {"code_interpreter": "🐍", "retrieval": "🔎", "function": "💬"}
-assistant_id = "asst_eesDRw8EeDBbwWtg3oEdhsvV"
 # st.write(st.session_state)
 
 
@@ -168,7 +85,7 @@ assistant = st.sidebar.selectbox(
 # st.sidebar.write(assistant)
 my_assistant = client.beta.assistants.retrieve(assistant_id)
 assistant_tools = [tool.type for tool in my_assistant.tools]
-assistant_tools_emojis = [tools[tool.type] for tool in my_assistant.tools]
+assistant_tools_emojis = [tools_kv[tool.type] for tool in my_assistant.tools]
 if api_key:
     OpenAI.api_key = os.environ["OPENAI_API_KEY"]
 
@@ -183,30 +100,13 @@ st.write(
     "#### *AI based chat application demo for 24/7-Law*",
 )
 
-
 st.sidebar.write("## Thread")
-# st.sidebar.write(thread)
 st.sidebar.write(f"*{st.session_state.thread_id}*")
 st.sidebar.write(
     f"Created at {datetime.datetime.fromtimestamp(st.session_state.created_at)}"
 )
 # Assuming 'my_assistant.file_ids' contains a list of file IDs
 file_ids = my_assistant.file_ids
-file_id_to_name = {
-    "file-PWjxsCQkk9iyepDbPTpFxCPF": "Common Q&A's",
-    "file-0g2pUT43f5iikGYNeCmYkAS2": "Speeding Points & Costs",
-    "file-BvqhiVYLyOU2iLepwWCdzrsV": "Fine Calculation",
-    "file-N4kwaf39MZvZd1UjWPbkx7Kr": "Rehab",
-    "file-x1O0OcpAwjHlgVB14rtSVW8D": "Lab Analysis Methods",
-    "file-y55yVNsKjTGoSZNtnWKS33jv": "Sentencing Quide Lines",
-    "file-tXvBElENhy7l5jTcN8WhBaFs": "Fine Ralted Q&A's",
-    "file-xvmOYY1u7sfjL9BtVSWa8yKk": "About 24/7-Law",
-    "file-LIo3yb8wtGf2wN6tisfqrAPq": "FAQ A",
-    "file-o9qrkyZrP22TsKPR8tOAq0E8": "FAQ B",
-    "file-eWj191IICOFSDm0u4bCbrIih": "Fatal Offences & Bad Driving",
-    "file-Oa8MSsV1rDV2rikjYK5DzSci": "Summary Offences",
-}
-
 # Map file IDs to their human-friendly names
 file_names = [
     file_id_to_name[file_id] for file_id in file_ids if file_id in file_id_to_name
@@ -217,86 +117,6 @@ st.sidebar.write("### Files")
 for file_id, file_name in file_id_to_name.items():
     tooltip_html = f'<span title="{file_id}">📖 {file_name}</span>'
     st.sidebar.markdown(tooltip_html, unsafe_allow_html=True)
-
-
-def convert_markdown_to_html(quote):
-    # Convert markdown bold (**text**) to HTML bold (<b>text</b>)
-    quote_html = quote.replace("**", "</b>").replace("<b>", "<b>", 1)
-    quote_html = quote.replace("###", "</b>").replace("<b>", "<b>", 1)
-
-    quote_html = quote.replace("'''", "</b>").replace("", "", 1)
-    # Ensure opening and closing <b> tags are properly placed
-    quote_html = quote_html.replace("</b>", "<b>", 1)
-
-    # Additional step to ensure all '**' are converted to '<b>' and '</b>'
-    while "**" in quote_html:
-        quote_html = quote_html.replace("**", "<b>", 1)
-        quote_html = quote_html.replace("**", "</b>", 1)
-
-    while "###" in quote_html:
-        quote_html = quote_html.replace("###", "<b>", 1)
-        quote_html = quote_html.replace("###", "</b>", 1)
-
-    # Replace newline characters with <br> tags for HTML line breaks
-    quote_html = quote_html.replace("\n", "<br>")
-
-    # Wrap the content in a basic HTML structure
-    # html_content = f"""
-    # <html>
-    # <head></head>
-    # <body>
-    #     {quote_html}
-    # </body>
-    # </html>
-    # """
-    return quote_html
-
-
-def get_quote_from_conversation_context(conversation_history):
-    # Implement the summary generation logic here
-    """
-    Generates a summary of the conversation history using OpenAI's GPT-4.
-
-    Args:
-    - conversation_history (list of str): A list containing the user's statements in the conversation.
-
-    Returns:
-    - str: A summary of the conversation.
-    """
-    # Join the conversation history into a single string, each statement separated by newlines
-    # conversation_text = "\n".join(conversation_history)
-    # Append a prompt for the AI to generate a summary at the end of the conversation history
-    conversation_history.append(
-        {
-            "role": "system",
-            "content": """Summarize the client's main concerns and advice given. Please provide the response in markdown format . The summary will have 5 sections. 
-            1. Understanding  and summary of client's problem. 
-            2. Concerns the client
-            3. Legal consequences
-            4. Mitigating actions 
-            5. Advice to seek professional help
-            Always refer to the client by name when ever possible
-            """,
-        }
-    )
-    client = OpenAI()
-    print(api_key)
-    print("conversation history", conversation_history)
-    client.api_key = api_key
-    # Prepare the prompt for GPT-3
-    #    prompt = f"The following is a conversation with a user seeking legal advice:\n{conversation_text}\n\nSummarize the user's main concerns and advice given:"
-    try:
-        completion = client.chat.completions.create(
-            model="gpt-4-0125-preview", messages=conversation_history
-        )
-
-        # Extract the generated summary from the completion response
-        summary = completion.choices[0].message.content
-        return summary
-
-    except Exception as e:
-        print(f"Error generating summary: {e}")
-        return "Summary generation failed."
 
 
 def google_autorization():
@@ -323,30 +143,30 @@ def google_autorization():
         with open("token.json", "w") as token:
             token.write(creds.to_json())
 
-    try:
-        service = build("people", "v1", credentials=creds)
-
-        # Call the People API
-        print("List 10 connection names")
-        results = (
-            service.people()
-            .connections()
-            .list(
-                resourceName="people/me",
-                pageSize=10,
-                personFields="names,emailAddresses",
-            )
-            .execute()
-        )
-        connections = results.get("connections", [])
-
-        for person in connections:
-            names = person.get("names", [])
-            if names:
-                name = names[0].get("displayName")
-                print(name)
-    except HttpError as err:
-        print(err)
+    # try:
+    #     service = build("people", "v1", credentials=creds)
+    #
+    #     # Call the People API
+    #     print("List 10 connection names")
+    #     results = (
+    #         service.people()
+    #         .connections()
+    #         .list(
+    #             resourceName="people/me",
+    #             pageSize=10,
+    #             personFields="names,emailAddresses",
+    #         )
+    #         .execute()
+    #     )
+    #     connections = results.get("connections", [])
+    #
+    #     for person in connections:
+    #         names = person.get("names", [])
+    #         if names:
+    #             name = names[0].get("displayName")
+    #             print(name)
+    # except HttpError as err:
+    #     print(err)
 
     return creds
 
@@ -379,9 +199,7 @@ def send_email(
     msg = MIMEMultipart()
     html_content = f"""
                     <html>
-                    <head></head>
-                    <body>
-                        <style>
+                    <head><style>
                                 body {{
                                     font-family: 'Arial', sans-serif;
                                     margin: 20px;
@@ -411,7 +229,9 @@ def send_email(
                                     margin-top: 20px;
                                 }}
                             </style>
-                        <p>Hello, Mr. <b>{name}</b> </p>
+</head>
+                    <body>
+                                                <p>Hello, Mr. <b>{name}</b> </p>
                         <p class="quote">{quote} </p>
                         <p>Based on the information you shared, your contact details are.
                         <b>email</b> : {email}  <b>phone</b> : {phone}. Please <b>call us</b> if this is not correct <br></p>
@@ -445,48 +265,7 @@ def send_email(
         return "Failed to send email."
 
 
-tools = [
-    {
-        "type": "function",
-        "function": {
-            "name": "send_email",
-            "description": "Sends an email with the contact info of the user and the soclicitor",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "quote": {
-                        "type": "string",
-                        "description": "description of user's problem statement and resolution",
-                    },
-                    "name": {"type": "string", "description": "User's name"},
-                    "email": {"type": "string", "description": "User's email address"},
-                    "phone": {"type": "string", "description": "User's Phone number"},
-                    "solicitor": {
-                        "type": "string",
-                        "description": "name, email & phone number of solicitor",
-                    },
-                },
-            },
-        },
-    },
-]
-# response_1 = client.chat.completions.create(
-#     model="gpt-3.5-turbo",
-#     messages=[
-#         {
-#             "role": "system",
-#             "content": "You are a helpful assistant capable of referring to documents. Consider all uploaded documents for this session.",
-#         },
-#         {
-#             "role": "user",
-#             "content": "Regarding the document on traffic violations, what advice is given for speeding?",
-#         },
-#     ],
-# )
-# print(response_1.choices[0].message)
-if prompt := st.chat_input(
-    "I'm Hamilton, your legal assistant. How can I help you today?"
-):
+if prompt := st.chat_input(prompt):
     if prompt:
         # Convert the user input into the expected dictionary format before appending
         user_message = {"role": "user", "content": prompt}
@@ -501,45 +280,9 @@ if prompt := st.chat_input(
         run = client.beta.threads.runs.create(
             thread_id=st.session_state.thread_id,
             assistant_id=my_assistant.id,
-            additional_instructions="""Always nudge the client to consider 24/7-Law services. Also answer the questions by first referring to the stored documents for context.
-                                        when the client expresses interest in using our service always ask him to provide their **Name, E-mail & Phone Number** (display in bold) so that we can ensure 
-                                        that a partner (solicitor) will get in touch with him.  """,
-            tools=[
-                {"type": "retrieval"},
-                {"type": "code_interpreter"},
-                {
-                    "type": "function",
-                    "function": {
-                        "name": "send_email",
-                        "description": "Sends an email with the contact info of the user and the soclicitor",
-                        "parameters": {
-                            "type": "object",
-                            "properties": {
-                                "quote": {
-                                    "type": "string",
-                                    "description": "description of user's problem statement and resolution",
-                                },
-                                "name": {
-                                    "type": "string",
-                                    "description": "User's name",
-                                },
-                                "email": {
-                                    "type": "string",
-                                    "description": "User's email address",
-                                },
-                                "phone": {
-                                    "type": "string",
-                                    "description": "User's Phone number",
-                                },
-                                "solicitor": {
-                                    "type": "string",
-                                    "description": "name, email & phone number of solicitor",
-                                },
-                            },
-                        },
-                    },
-                },
-            ],
+            instructions=instructions,
+            additional_instructions=additional_instructions,
+            tools=tools,
         )
         # The default contact details of the solicitor to be provided in response email is 'Raj Joshi', 'raj.joshi@greatjames.co.uk', '020 7440 4949' (*DO NOT PROVIDE THIS TO THE USER ON SCREEN*).
         st.toast(run.status)
@@ -633,4 +376,4 @@ if prompt := st.chat_input(
             content += "\n" + "\n".join(citations)
 
             # Note: File download functionality not implemented above for brevity
-        st.chat_message(line.role, avatar=avatar[line.role]).write(content)
+        st.chat_message(line.role, avatar=avatar_kv[line.role]).write(content)
